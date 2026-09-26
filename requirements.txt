@@ -1,0 +1,5 @@
+Flask==3.0.3
+Werkzeug==3.0.3
+numpy>=1.26.0
+opencv-python-headless>=4.8.0.74
+mysql-connector-python>=8.3.0

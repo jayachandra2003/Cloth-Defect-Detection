@@ -1,0 +1,9 @@
+pip install Flask==2.2.1
+pip install mysql_connector_repackaged==0.3.1
+pip install numpy==1.25.2
+pip install opencv_contrib_python==4.4.0.46
+pip install opencv_python==4.10.0.84
+pip install opencv_python_headless==4.8.0.74
+pip install scikit_learn==1.0.2
+pip install tensorflow==2.8.0
+pip install tensorflow_intel
