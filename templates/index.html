@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Fabric Marketplace - Cloth Defect Detection & Market Integration</title>
+  <style>
+    /* Reset and Base Styles */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #f4f4f4;
+      color: #333;
+      line-height: 1.6;
+    }
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+    
+    /* Header Styles */
+    header {
+      background: #222;
+      color: #fff;
+      padding: 1rem 0;
+    }
+    header .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+    header .logo h1 {
+      font-size: 1.8rem;
+    }
+    nav ul {
+      list-style: none;
+      display: flex;
+      flex-wrap: wrap;
+    }
+    nav ul li {
+      margin: 0 15px;
+    }
+    nav ul li a {
+      color: #fff;
+      transition: color 0.3s ease;
+    }
+    nav ul li a:hover {
+      color: #e67e22;
+    }
+    
+    /* Hero Section */
+    .hero {
+      position: relative;
+      height: 600px;
+      background: url('/static/images/bg.jpg') no-repeat center center/cover;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      color: #fff;
+    }
+    .hero::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.5);
+    }
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      max-width: 800px;
+      padding: 0 20px;
+    }
+    .hero-content h1 {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+    }
+    .hero-content p {
+      font-size: 1.2rem;
+      margin-bottom: 2rem;
+    }
+    .btn {
+      background: #e67e22;
+      color: #fff;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 1rem;
+      transition: background 0.3s ease;
+    }
+    .btn:hover {
+      background: #cf711f;
+    }
+    
+    /* Main Content */
+    main {
+      max-width: 1200px;
+      margin: 2rem auto;
+      padding: 0 20px;
+    }
+    .section {
+      margin-bottom: 2rem;
+      background: #fff;
+      padding: 2rem;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+    .section h2 {
+      margin-bottom: 1rem;
+      color: #222;
+    }
+    .section p {
+      margin-bottom: 1rem;
+    }
+    
+    /* Footer Styles */
+    footer {
+      background: #222;
+      color: #fff;
+      padding: 1.5rem 0;
+    }
+    footer .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .socials {
+      margin: 1rem 0;
+    }
+    .socials a {
+      color: #fff;
+      margin: 0 10px;
+      font-size: 1.2rem;
+      transition: color 0.3s ease;
+    }
+    .socials a:hover {
+      color: #e67e22;
+    }
+    footer p {
+      font-size: 0.9rem;
+    }
+    
+    /* Responsive Styles */
+    @media (max-width: 768px) {
+      header .container {
+        flex-direction: column;
+        text-align: center;
+      }
+      nav ul {
+        flex-direction: column;
+        margin-top: 10px;
+      }
+      nav ul li {
+        margin: 10px 0;
+      }
+      .hero {
+        height: 400px;
+      }
+      .hero-content h1 {
+        font-size: 2.5rem;
+      }
+      .hero-content p {
+        font-size: 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header>
+    <div class="container">
+      <div class="logo">
+        <h1>Cloth Defect Detection</h1>
+      </div>
+      <nav>
+        <ul>
+          <li><a href="#hero">Home</a></li>
+          <li><a href="#features">Features</a></li>
+          <li><a href="#integration">Market Integration</a></li>
+          <li><a href="#contact">Contact</a></li>
+          <li><a href="{{ url_for('register') }}">Register</a></li>
+          <li><a href="{{ url_for('login') }}">Login</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero" id="hero">
+    <div class="hero-content">
+      <h1>Welcome to Fabric Marketplace</h1>
+      <p>Integrating Deep Learning for Superior Defect Detection and Smart Market Integration</p>
+      <button class="btn" onclick="window.location.href='register'">Get Started</button>
+    </div>
+  </section>
+
+  <!-- Main Content -->
+  <main>
+    <section class="section" id="features">
+      <h2>Advanced Defect Detection</h2>
+      <p>Utilizing state-of-the-art deep learning algorithms, our system identifies fabric defects with high precision, ensuring top-notch quality control throughout the production process.</p>
+    </section>
+    <section class="section" id="integration">
+      <h2>Seamless Market Integration</h2>
+      <p>Our platform effortlessly integrates with online marketplaces, enabling precise product classification and competitive pricing strategies to boost your retail success.</p>
+    </section>
+    <section class="section" id="contact">
+      <h2>Contact Us</h2>
+      <p>Have any questions or need support? Email us at <a href="mailto:info@fabricmarketplace.com">info@fabricmarketplace.com</a> and we will get back to you shortly.</p>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="socials">
+        <a href="https://facebook.com" target="_blank">Facebook</a>
+        <a href="https://twitter.com" target="_blank">Twitter</a>
+        <a href="https://instagram.com" target="_blank">Instagram</a>
+      </div>
+      <p>&copy;  Fabric Marketplace. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script>
+    // JavaScript can be expanded for more dynamic interactivity
+    // Example: A simple function to log clicks on the Get Started button
+    document.querySelector('.btn').addEventListener('click', function() {
+      console.log('Get Started button clicked');
+    });
+  </script>
+</body>
+</html>

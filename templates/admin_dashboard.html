@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Admin Dashboard - Fabric Marketplace</title>
+  <style>
+    /* Reset and Base Styles */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #f4f4f4;
+      color: #333;
+      line-height: 1.6;
+    }
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    /* Header Styles */
+    header {
+      background: #222;
+      color: #fff;
+      padding: 1rem 0;
+    }
+    header .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+    header .logo h1 {
+      font-size: 1.8rem;
+    }
+    nav ul {
+      list-style: none;
+      display: flex;
+      flex-wrap: wrap;
+    }
+    nav ul li {
+      margin: 0 15px;
+    }
+    nav ul li a {
+      color: #fff;
+      transition: color 0.3s ease;
+    }
+    nav ul li a:hover {
+      color: #e67e22;
+    }
+
+    /* Main Content Styles */
+    main {
+      max-width: 1200px;
+      margin: 2rem auto;
+      padding: 0 20px;
+    }
+    h2.section-title {
+      text-align: center;
+      margin-bottom: 1.5rem;
+      color: #222;
+    }
+    .dashboard-table {
+      width: 100%;
+      border-collapse: collapse;
+      background: #fff;
+    }
+    .dashboard-table th,
+    .dashboard-table td {
+      border: 1px solid #ddd;
+      padding: 12px;
+      text-align: left;
+    }
+    .dashboard-table th {
+      background: #e67e22;
+      color: #fff;
+    }
+    .dashboard-table tr:nth-child(even) {
+      background: #f9f9f9;
+    }
+    .dashboard-table tr:hover {
+      background: #f1f1f1;
+    }
+    .logout-btn {
+      display: inline-block;
+      margin-top: 1.5rem;
+      padding: 10px 20px;
+      background: #e74c3c;
+      color: #fff;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+    .logout-btn:hover {
+      background: #c0392b;
+    }
+
+    /* Footer Styles */
+    footer {
+      background: #222;
+      color: #fff;
+      padding: 1.5rem 0;
+      margin-top: 2rem;
+    }
+    footer .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+      text-align: center;
+    }
+    .socials a {
+      color: #fff;
+      margin: 0 10px;
+      font-size: 1.2rem;
+      transition: color 0.3s ease;
+    }
+    .socials a:hover {
+      color: #e67e22;
+    }
+    footer p {
+      margin-top: 1rem;
+      font-size: 0.9rem;
+    }
+
+    /* Responsive Styles */
+    @media (max-width: 768px) {
+      header .container {
+        flex-direction: column;
+        text-align: center;
+      }
+      nav ul {
+        flex-direction: column;
+        margin-top: 10px;
+      }
+      nav ul li {
+        margin: 10px 0;
+      }
+      .dashboard-table th,
+      .dashboard-table td {
+        padding: 8px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header>
+    <div class="container">
+      <div class="logo">
+        <h1>Cloth Defect Detection</h1>
+      </div>
+      <nav>
+        <ul>
+          <li><a href="{{ url_for('admin_dashboard') }}">Dashboard</a></li>
+          <li><a href="{{ url_for('logout') }}">Logout</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main>
+    <h2 class="section-title">Admin Dashboard</h2>
+    <table class="dashboard-table">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Name</th>
+          <th>Email</th>
+          <th>Role</th>
+          <th>Created At</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for user in users %}
+        <tr>
+          <td>{{ user.id }}</td>
+          <td>{{ user.name }}</td>
+          <td>{{ user.email }}</td>
+          <td>{{ user.role }}</td>
+          <td>{{ user.created_at }}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+    <!-- <a href="{{ url_for('logout') }}" class="logout-btn">Logout</a> -->
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="socials">
+        <a href="https://facebook.com" target="_blank">Facebook</a>
+        <a href="https://twitter.com" target="_blank">Twitter</a>
+        <a href="https://instagram.com" target="_blank">Instagram</a>
+      </div>
+      <p>&copy;  Fabric Marketplace. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script>
+    // JavaScript for additional interactivity if needed
+    document.addEventListener('DOMContentLoaded', function() {
+      console.log('Admin Dashboard loaded');
+    });
+  </script>
+</body>
+</html>

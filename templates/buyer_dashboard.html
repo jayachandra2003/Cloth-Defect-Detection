@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Buyer Dashboard - Fabric Marketplace</title>
+  <style>
+    /* Reset & Base Styles */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #f4f4f4;
+      color: #333;
+      line-height: 1.6;
+    }
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    /* Header */
+    header {
+      background: #222;
+      color: #fff;
+      padding: 1rem 0;
+      text-align: center;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
+    header .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 20px;
+    }
+    .logo h1 {
+      font-size: 1.8rem;
+      font-weight: bold;
+    }
+    nav ul {
+      list-style: none;
+      display: flex;
+    }
+    nav ul li {
+      margin: 0 15px;
+    }
+    nav ul li a {
+      color: #fff;
+      font-size: 1.1rem;
+      transition: color 0.3s ease;
+    }
+    nav ul li a:hover {
+      color: #ffd700;
+    }
+
+    /* Dashboard Layout */
+    .dashboard-container {
+      display: flex;
+      max-width: 1200px;
+      margin: 3rem auto;
+      padding: 0 20px;
+      gap: 20px;
+    }
+
+    /* Left Panel - Upload Section */
+    .upload-section {
+      flex: 1;
+      background: #fff;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      text-align: center;
+    }
+    .upload-section h4 {
+      margin-bottom: 1rem;
+      color: #d35400;
+      font-size: 1.4rem;
+      font-weight: bold;
+    }
+    form input, form button {
+      padding: 12px;
+      margin: 10px 0;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      width: 100%;
+      font-size: 1rem;
+    }
+    form button {
+      background: #e67e22;
+      color: #fff;
+      border: none;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+    form button:hover {
+      background: #cf711f;
+    }
+    
+    /* Prediction Result */
+    .prediction-result {
+      background: #fff;
+      padding: 0px;
+      border-radius: 8px;
+      box-shadow: 0 4px 3px rgba(0,0,0,0.1);
+      margin-top: 1rem;
+      text-align: center;
+    }
+    .prediction-result img {
+    width: 100%;
+    max-width: 400px; /* Adjusted to medium size */
+    height: auto;
+    margin-top: 0rem;
+    border-radius: 10px;
+  }
+    /* Right Panel - Fabric Listings */
+    .fabric-section {
+      flex: 2;
+    }
+    .fabric-section h4 {
+      margin-bottom: 1rem;
+      color: #d35400;
+      font-size: 1.4rem;
+      font-weight: bold;
+      text-align: center;
+    }
+    .fabric-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 20px;
+    }
+    .card {
+      background: #fff;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      transition: transform 0.3s;
+    }
+    .card:hover {
+      transform: translateY(-5px);
+    }
+    .card img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+    }
+    .card-body {
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+    }
+    .card-body h5 {
+      font-size: 1.2rem;
+      margin-bottom: 10px;
+      color: #d35400;
+    }
+    .card-body p {
+      margin-bottom: 8px;
+      font-size: 0.95rem;
+    }
+    .card-body a {
+      margin-top: auto;
+      padding: 10px;
+      background: #2ecc71;
+      color: #fff;
+      border-radius: 6px;
+      text-align: center;
+      transition: background 0.3s;
+      font-size: 1rem;
+    }
+    .card-body a:hover {
+      background: #27ae60;
+    }
+
+    /* Footer */
+    footer {
+      background: #222;
+      color: #fff;
+      padding: 1.5rem 0;
+      text-align: center;
+      margin-top: 3rem;
+    }
+    /* Reduce video size */
+    .small-video {
+      width: 100%;
+      max-width: 200px; /* Adjusted for a medium size */
+      height: auto; /* Maintain aspect ratio */
+      border-radius: 10px;
+      display: block;
+      margin: 10px auto;
+    }
+    /* Responsive */
+    @media (max-width: 992px) {
+      .dashboard-container {
+        flex-direction: column;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header>
+    <div class="container">
+      <div class="logo">
+        <h1>Fabric Marketplace</h1>
+      </div>
+      <nav>
+        <ul>
+          <li><a href="{{ url_for('buyer_dashboard') }}">Dashboard</a></li>
+          <li><a href="{{ url_for('logout') }}">Logout</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <div class="dashboard-container">
+
+    <!-- Upload Fabric for Prediction -->
+    <section class="upload-section">
+      <h4>Upload Fabric for Prediction</h4>
+      <form action="{{ url_for('predict_fabric_route') }}" method="POST" enctype="multipart/form-data">
+        <input type="file" name="file" required>
+        <button type="submit">Predict Fabric Condition</button>
+      </form>
+  
+      {% if final_output %}
+      <div class="prediction-result">
+        <h5>Prediction Result:</h5>
+        <img src="{{ url_for('static', filename='uploads/' + uploaded_filename) }}" alt="Uploaded Image">
+        {% if marked_filename %}
+        <img src="{{ url_for('static', filename='uploads/' + marked_filename) }}" alt="Marked Image">
+        {% endif %}
+        <p><strong>Result:</strong> {{ final_output }}</p>
+        <p><strong>Confidence:</strong> {{ confidence|round(2) }}%</p>
+        <p><strong>Grade:</strong> {{ grade }}</p>
+      </div>
+      {% endif %}
+    </section>
+  
+   <!-- Upload Fabric Video for Prediction -->
+  <section class="upload-section">
+    <h4>Upload Fabric Video for Prediction</h4>
+    <form action="{{ url_for('predict_fabric_video') }}" method="POST" enctype="multipart/form-data">
+      <input type="file" name="file" accept="video/*" required>
+      <button type="submit">Predict Fabric Condition</button>
+    </form>
+
+    {% if results %}
+    <div class="prediction-result">
+      <h5>Prediction Results:</h5>
+      <video controls style="width: 100%; max-width: 400px; border-radius: 10px;">
+        <source src="{{ url_for('static', filename='uploads/' + uploaded_filename) }}" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+      <p><strong>Final Result:</strong> {{ results }}</p>
+    </div>
+    {% endif %}
+  </section>
+
+
+  
+    <!-- Available Fabrics -->
+    <section class="fabric-section">
+      <h4>Available Fabrics</h4>
+      <div class="fabric-grid">
+        {% for fabric in fabrics %}
+        <div class="card">
+          <img src="{{ url_for('static', filename='uploads/' + fabric.image) }}" alt="{{ fabric.name }}">
+          <div class="card-body">
+            <h5>{{ fabric.name }}</h5>
+            <p><strong>Seller:</strong> {{ fabric.seller_name }}</p>
+            <p><strong>Predicted Fabric Result:</strong> {{ fabric.predicted_fabric }}</p>
+            <p><strong>Quality Grade:</strong> {{ fabric.quality_grade }}</p>
+            <p><strong>Price:</strong> ₹{{ fabric.price }}</p>
+            <a href="mailto:{{ fabric.seller_email }}">Contact Seller</a>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+    </section>
+  
+  </div>
+  
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy;  Fabric Marketplace. All rights reserved.</p>
+  </footer>
+
+</body>
+</html>

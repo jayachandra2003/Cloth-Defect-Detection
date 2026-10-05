@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Login - Fabric Marketplace</title>
+  <style>
+    /* Reset and Base Styles */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #f4f4f4;
+      color: #333;
+      line-height: 1.6;
+    }
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+    
+    /* Header Styles */
+    header {
+      background: #222;
+      color: #fff;
+      padding: 1rem 0;
+    }
+    header .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+    header .logo h1 {
+      font-size: 1.8rem;
+    }
+    nav ul {
+      list-style: none;
+      display: flex;
+      flex-wrap: wrap;
+    }
+    nav ul li {
+      margin: 0 15px;
+    }
+    nav ul li a {
+      color: #fff;
+      transition: color 0.3s ease;
+    }
+    nav ul li a:hover {
+      color: #e67e22;
+    }
+    
+    /* Main Content Styles */
+    main {
+      max-width: 500px;
+      margin: 3rem auto;
+      padding: 2rem;
+      background: #fff;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+    main h2 {
+      text-align: center;
+      margin-bottom: 1.5rem;
+      color: #222;
+    }
+    form {
+      display: flex;
+      flex-direction: column;
+    }
+    form input {
+      padding: 10px;
+      margin-bottom: 1rem;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      font-size: 1rem;
+    }
+    form button {
+      padding: 10px;
+      background: #e67e22;
+      color: #fff;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 1rem;
+      transition: background 0.3s ease;
+    }
+    form button:hover {
+      background: #cf711f;
+    }
+    
+    /* Footer Styles */
+    footer {
+      background: #222;
+      color: #fff;
+      padding: 1.5rem 0;
+      margin-top: 2rem;
+    }
+    footer .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+      text-align: center;
+    }
+    footer .socials a {
+      color: #fff;
+      margin: 0 10px;
+      font-size: 1.2rem;
+      transition: color 0.3s ease;
+    }
+    footer .socials a:hover {
+      color: #e67e22;
+    }
+    footer p {
+      font-size: 0.9rem;
+      margin-top: 1rem;
+    }
+    
+    /* Responsive Styles */
+    @media (max-width: 768px) {
+      header .container {
+        flex-direction: column;
+        text-align: center;
+      }
+      nav ul {
+        flex-direction: column;
+        margin-top: 10px;
+      }
+      nav ul li {
+        margin: 10px 0;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header>
+    <div class="container">
+      <div class="logo">
+        <h1>Cloth Defect Detection</h1>
+      </div>
+      <nav>
+        <ul>
+          <li><a href="{{ url_for('home') }}">Home</a></li>
+          <li><a href="{{ url_for('register') }}">Register</a></li>
+          <li><a href="{{ url_for('login') }}">Login</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main>
+    <h2>Login</h2>
+    <form action="/login" method="post">
+      <input type="email" name="email" placeholder="Email" required>
+      <input type="password" name="password" placeholder="Password" required>
+      <button type="submit">Login</button>
+    </form>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="socials">
+        <a href="https://facebook.com" target="_blank">Facebook</a>
+        <a href="https://twitter.com" target="_blank">Twitter</a>
+        <a href="https://instagram.com" target="_blank">Instagram</a>
+      </div>
+      <p>&copy;  Fabric Marketplace. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script>
+    // JavaScript for potential dynamic interactions
+    document.querySelector('form').addEventListener('submit', function(event) {
+      console.log('Login form submitted');
+    });
+  </script>
+</body>
+</html>
