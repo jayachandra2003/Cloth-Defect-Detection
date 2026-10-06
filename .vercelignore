@@ -1,0 +1,16 @@
+Dataset/
+Fabric_Dataset/
+Test/
+Videos/
+TempFrames/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.venv/
+venv/
+env/
+*.bat
+*.sql
+train_model.py
+video_train_model.py
