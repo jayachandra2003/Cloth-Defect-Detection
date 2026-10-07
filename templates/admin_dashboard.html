@@ -191,6 +191,32 @@
         {% endfor %}
       </tbody>
     </table>
+
+    <h2 class="section-title" style="margin-top: 3rem;">Marketplace Fabrics Overview</h2>
+    <table class="dashboard-table">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Fabric Name</th>
+          <th>Type</th>
+          <th>Price</th>
+          <th>Seller ID</th>
+          <th>Created At</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for fabric in fabrics %}
+        <tr>
+          <td>{{ fabric.id }}</td>
+          <td>{{ fabric.name }}</td>
+          <td>{{ fabric.type }}</td>
+          <td>₹{{ fabric.price }}</td>
+          <td>{{ fabric.seller_id }}</td>
+          <td>{{ fabric.created_at }}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
     <!-- <a href="{{ url_for('logout') }}" class="logout-btn">Logout</a> -->
   </main>
 
