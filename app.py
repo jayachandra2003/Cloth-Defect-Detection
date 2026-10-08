@@ -378,6 +378,10 @@ def predict_fabric_route():
         file.save(file_path)
 
         final_output, confidence, grade = predict_fabric(file_path)
+        marked_filename = None
+        if "Defect" in final_output:
+            marked_path = detect_defects(file_path)
+            marked_filename = os.path.basename(marked_path)
 
         return render_template(
             "buyer_dashboard.html",
@@ -386,6 +390,7 @@ def predict_fabric_route():
             confidence=confidence,
             grade=grade,
             uploaded_filename=filename,
+            marked_filename=marked_filename,
             fabrics=_get_marketplace_fabrics(),
         )
 
